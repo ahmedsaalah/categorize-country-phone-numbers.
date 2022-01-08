@@ -43,6 +43,10 @@ class Handler extends ExceptionHandler
     {
         if (is_a($throwable, 'App\Exceptions\ValidationException')) {
             return \App\Services\GeneralService::getErrorResponse(array($throwable->getCode()), $throwable->getHttpCode(), $throwable->errors, $throwable->getDataArr(), isset($throwable->uuid) ? $throwable->uuid : null);
+        }  elseif (is_a($throwable, 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException')) {
+            throw new RouteException(Error::ROUTE_NOT_FOUND);
+        } elseif (is_a($throwable, 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException')) {
+            throw new RouteException(Error::METHOD_NOT_ALLOWED);
         } elseif (is_a($throwable, 'App\Exceptions\BaseException')) {
             return \App\Services\GeneralService::getErrorResponse(array($throwable->getCode()), $throwable->getHttpCode(), null, $throwable->getDataArr(), isset($throwable->uuid) ? $throwable->uuid : null);
         }else {
