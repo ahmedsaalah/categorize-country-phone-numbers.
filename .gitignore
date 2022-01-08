@@ -17,4 +17,6 @@ bin-release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 
-/vendor/
+api/vendor/
+api/storage/
+front/node_modules/
