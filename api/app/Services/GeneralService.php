@@ -58,7 +58,7 @@ class GeneralService
         $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
       
         return new LengthAwarePaginator(
-            $collection->forPage($page, $perPage),
+            $collection->forPage($page, $perPage)->values(),
             $total ?: $collection->count(),
             $perPage,
             $page,
