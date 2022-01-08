@@ -41,11 +41,15 @@ class Handler extends ExceptionHandler
     }
     public function render($request, Throwable $throwable)
     {
+        \Log::channel('elasticsearch')->error($throwable);
         if (is_a($throwable, 'App\Exceptions\ValidationException')) {
+            \Log::channel('elasticsearch')->error($throwable->errors);
             return \App\Services\GeneralService::getErrorResponse(array($throwable->getCode()), $throwable->getHttpCode(), $throwable->errors, $throwable->getDataArr(), isset($throwable->uuid) ? $throwable->uuid : null);
         }  elseif (is_a($throwable, 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException')) {
+            \Log::channel('elasticsearch')->error(Error::ROUTE_NOT_FOUND);
             throw new RouteException(Error::ROUTE_NOT_FOUND);
         } elseif (is_a($throwable, 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException')) {
+            \Log::channel('elasticsearch')->error(Error::METHOD_NOT_ALLOWED);
             throw new RouteException(Error::METHOD_NOT_ALLOWED);
         } elseif (is_a($throwable, 'App\Exceptions\BaseException')) {
             return \App\Services\GeneralService::getErrorResponse(array($throwable->getCode()), $throwable->getHttpCode(), null, $throwable->getDataArr(), isset($throwable->uuid) ? $throwable->uuid : null);
