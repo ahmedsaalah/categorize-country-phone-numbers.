@@ -18,6 +18,7 @@
  ```sh
 cd api
 docker-compose up -d
+docker-compose exec app composer install
 ```
 - FrontEnd
  ```sh
@@ -32,10 +33,10 @@ docker-compose exec app php artisan test
 ## Browse URLs
 | Service | URL |
 | ------ | ------ |
-| Frontend | [http://localhost:8000/][PlDb] |
-| swagger | [http://localhost:8080/api/documentation][PlGh] |
-| kibana | [http://localhost:5601][PlGd] |
-| Api | [http://localhost:8080/api/customers][PlOd] |
+| Frontend | http://localhost:8000/ |
+| swagger | http://localhost:8080/api/documentation |
+| kibana | http://localhost:5601 index customer*|
+| Api | http://localhost:8080/api/customers |
 
 
 
