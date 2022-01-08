@@ -29,7 +29,7 @@ class GetCustomersRequest extends BaseRequest
             'country' => 'in:Cameroon,Ethiopia,Morocco,Mozambique,Uganda',
             'state'  => 'bool',
             'page' =>'integer',
-            'per_page' => 'integer',
+            'limit' => 'integer',
 
         ];
     }

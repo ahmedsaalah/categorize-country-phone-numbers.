@@ -23,9 +23,9 @@ class CustomerController extends Controller
         $country = !is_null($request->country) ? $request->country : null;
         $state = !is_null($request->state) ? $request->state : null;
         $page = !is_null($request->page) ? $request->page : Paginate::PAGE;
-        $per_page = !is_null($request->per_page) ? $request->per_page : Paginate::PER_PAGE;
+        $limit = !is_null($request->limit) ? $request->limit : Paginate::PER_PAGE;
 
-        $countries = $this->customerService->getCustomers($country, $state, $page, $per_page);
+        $countries = $this->customerService->getCustomers($country, $state, $page, $limit);
         return $this->getSuccessResponse($countries);
     }
 }
