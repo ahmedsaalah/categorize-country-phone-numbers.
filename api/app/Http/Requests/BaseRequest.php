@@ -33,8 +33,6 @@ class BaseRequest extends FormRequest {
         parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
     }
 
-    private $generalService;
-
     /**
      * Authorization rules for the request
      * 
