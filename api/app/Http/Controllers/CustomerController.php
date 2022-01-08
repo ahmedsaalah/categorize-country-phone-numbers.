@@ -13,18 +13,19 @@ class CustomerController extends Controller
      * 
      * @param CustomerService $customerService
      */
-    public function __construct(CustomerService $customerService ) {
+    public function __construct(CustomerService $customerService)
+    {
         $this->customerService = $customerService;
     }
 
-    public function index(GetCustomersRequest $request) {
-        $country =($request->country)?$request->country:null;
-        $state =($request->state)?$request->state:null;
-        $page =($request->page)?$request->page:Paginate::PAGE;
-        $per_page =($request->per_page)?$request->per_page:Paginate::PER_PAGE;
+    public function index(GetCustomersRequest $request)
+    {
+        $country = !is_null($request->country) ? $request->country : null;
+        $state = !is_null($request->state) ? $request->state : null;
+        $page = !is_null($request->page) ? $request->page : Paginate::PAGE;
+        $per_page = !is_null($request->per_page) ? $request->per_page : Paginate::PER_PAGE;
 
         $countries = $this->customerService->getCustomers($country, $state, $page, $per_page);
         return $this->getSuccessResponse($countries);
     }
-
 }

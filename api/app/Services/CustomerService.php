@@ -15,10 +15,10 @@ class CustomerService
     {
         $customers = collect(Customer::all('phone')->toArray());
         if (isset($country)) {
-            $customers = GeneralService::filterByKey(SearchKey::COUNTRY, $country, $customers);
+            $customers = GeneralService::filterByKey(SearchKey::COUNTRY, $country, $customers)->values();
         }
         if (isset($state)) {
-            $customers =  GeneralService::filterByKey(SearchKey::STATE, $state, $customers);
+            $customers =  GeneralService::filterByKey(SearchKey::STATE, $state, $customers)->values();
         }
         return  GeneralService::paginate($customers, $perPage, $page);
     }
