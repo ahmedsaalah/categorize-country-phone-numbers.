@@ -1,0 +1,71 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super  ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/customers": {
+            "get": {
+              "tags": ["customer"],
+              "summary": "get customers",
+              "parameters": [
+                {
+                    "name": "country",
+                    "in": "query",
+                    "description": "",
+                    "required": false,
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                      "type": "string" 
+                    }
+                  },
+                  {
+                    "name": "state",
+                    "in": "query",
+                    "description": "",
+                    "required": false,
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                      "type": "string" 
+                    }
+                  },
+                  {
+                    "name": "page",
+                    "in": "query",
+                    "description": "",
+                    "required": false,
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                      "type": "string" 
+                    }
+                  },
+                {
+                  "name": "limit",
+                  "in": "query",
+                  "description": "",
+                  "required": false,
+                  "style": "form",
+                  "explode": true,
+                  "schema": {
+                    "type": "string" 
+                  }
+                }
+              ],
+      
+      
+              "responses": {
+                "200": {
+                  "description": "OK"
+                }
+              }
+             
+            }
+            
+          }
+    }
+
+}
